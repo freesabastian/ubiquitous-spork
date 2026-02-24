@@ -12,9 +12,6 @@ sudo apt-get update
 # Install System Dependencies
 echo "[*] Installing system dependencies..."
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    python3 \
-    python3-pip \
-    python3-venv \
     curl \
     wget \
     unzip \

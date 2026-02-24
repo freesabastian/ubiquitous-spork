@@ -8,7 +8,7 @@ on:
         required: true
         default: '1'
   schedule:
-    - cron: '0 */1 * * *' # Run every 6 hours
+    - cron: '0 */6 * * *' # Run every 6 hours
 
 permissions:
   contents: write
@@ -46,8 +46,10 @@ jobs:
           
           # Run the main script
           # Using Xvfb to provide a display, so we don't need --headless.
-          # We pass DISPLAY to sudo so Chromium knows where to draw the screen.
-          sudo DISPLAY=:99 python3 main.py -v -l ${{ github.event.inputs.loops || '1' }}
+          # We pass DISPLAY to sudo so Chromium knows where to draw the screen,
+          # and we specifically use $(which python) so sudo uses the setup-python
+          # environment rather than the default system python (which lacks selenium).
+          sudo env DISPLAY=:99 $(which python) main.py -v -l ${{ github.event.inputs.loops || '1' }}
 
       - name: Commit and Push Accounts
         run: |
