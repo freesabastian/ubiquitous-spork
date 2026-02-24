@@ -1,0 +1,5 @@
+
+mx-free-14.protonvpn.udp.ovpn
+ca-free-3.protonvpn.udp.ovpn
+nl-free-98.protonvpn.udp.ovpn
+nl-free-158.protonvpn.udp.ovpn

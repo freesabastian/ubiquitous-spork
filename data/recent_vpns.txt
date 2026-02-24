@@ -1,0 +1,10 @@
+sg-free-17.protonvpn.udp.ovpn
+ca-free-3.protonvpn.udp.ovpn
+mx-free-6.protonvpn.udp.ovpn
+jp-free-13.protonvpn.udp.ovpn
+nl-free-33.protonvpn.udp.ovpn
+us-free-38.protonvpn.udp.ovpn
+nl-free-31.protonvpn.udp.ovpn
+nl-free-98.protonvpn.udp.ovpn
+nl-free-158.protonvpn.udp.ovpn
+nl-free-15.protonvpn.udp.ovpn
