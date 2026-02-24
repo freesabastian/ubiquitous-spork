@@ -18,7 +18,7 @@ from utils.vpn_proxy import check_tor_status
 def _find_chrome_binary():
     """Find the Chrome/Chromium binary."""
     candidates = [
-        'google-chrome', 'google-chrome-stable', 'chromium-browser', 'chromium',
+        'chromium-browser', 'chromium', 'google-chrome', 'google-chrome-stable',
     ]
     for name in candidates:
         path = shutil.which(name)
@@ -27,8 +27,8 @@ def _find_chrome_binary():
 
     # Check absolute paths (WSL + Linux)
     for path in [
-        "/usr/bin/google-chrome", "/usr/bin/google-chrome-stable",
         "/usr/bin/chromium-browser", "/usr/bin/chromium",
+        "/usr/bin/google-chrome", "/usr/bin/google-chrome-stable",
         "/snap/bin/chromium",
         "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe",
     ]:
