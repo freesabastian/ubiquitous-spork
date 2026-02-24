@@ -49,7 +49,7 @@ jobs:
           # We pass DISPLAY to sudo so Chromium knows where to draw the screen,
           # and we specifically use $(which python) so sudo uses the setup-python
           # environment rather than the default system python (which lacks selenium).
-          sudo env DISPLAY=:99 $(which python) main.py -v -l ${{ github.event.inputs.loops || '1' }}
+          sudo env DISPLAY=:99 PYTHONUNBUFFERED=1 $(which python) main.py -l ${{ github.event.inputs.loops || '1' }}
 
       - name: Commit and Push Accounts
         run: |
