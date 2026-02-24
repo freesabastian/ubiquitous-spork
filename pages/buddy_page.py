@@ -461,6 +461,18 @@ class BuddySignupPage(BasePage):
         print("[Signup] Looking for signup button...")
         self.human.wait_like_human('general')
         
+        # Check if Amazon Captcha is already showing *before* clicking signup
+        # Sometimes Atlassian pops it up immediately
+        try:
+            amzn_container = self.driver.find_elements(By.CSS_SELECTOR, "#captcha-container")
+            if amzn_container and amzn_container[0].is_displayed():
+                print("[Signup] Amazon Captcha detected before clicking signup!")
+                result = self.check_and_click_captcha()
+                if result == 'audio_solved':
+                    time.sleep(3)
+        except Exception:
+            pass
+            
         # First, find and click the signup button
         selectors = [
             "#signup-submit",
@@ -552,6 +564,8 @@ class BuddySignupPage(BasePage):
         
         # NOW wait for OTP inputs to appear before returning
         print("[Signup] Waiting for code input page...")
+        time.sleep(4) # Give Atlassian extra time to redirect
+        
         if not self.wait_for_otp_inputs(timeout=20):
             print("[Signup] ✗ Code input page did NOT load!")
             print("[Signup] This means CAPTCHA FAILED or page didn't reload correctly")
