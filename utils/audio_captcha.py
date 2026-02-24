@@ -9,7 +9,9 @@ import re
 try:
     from config import HUGGINGFACE_API_TOKEN
 except:
-    HUGGINGFACE_API_TOKEN = "[REMOVED_HF_TOKEN]"
+    # Read from environment as a safe default (avoid committing secrets)
+    import os
+    HUGGINGFACE_API_TOKEN = os.environ.get("HUGGINGFACE_API_TOKEN", "")
 
 
 class AudioCaptchaSolver:
